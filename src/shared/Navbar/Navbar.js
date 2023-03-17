@@ -147,7 +147,7 @@ const Navbar = () => {
               location.pathname === "/login" ? "text-orange-400" : ""
             }`}
           >
-            <Link title="Log in" to="/login">
+            <Link title="Log in" to="/loginn">
               Log in
             </Link>
           </li>
