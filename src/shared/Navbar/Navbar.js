@@ -9,7 +9,7 @@ import { AuthContext } from "../../AuthProvider/UserContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  //   const { SignOut } = useContext(AuthContext);
+  const { user, SignOut } = useContext(AuthContext);
   const [theme, setTheme] = useState("light");
   const location = useLocation();
   const navigate = useNavigate();
@@ -26,14 +26,14 @@ const Navbar = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-  //   const handleLogOut = () => {
-  //     SignOut()
-  //       .then(() => {
-  //         toast.success("Successfully loged out");
-  //         navigate("/login");
-  //       })
-  //       .catch((error) => console.error(error));
-  //   };
+  const handleLogOut = () => {
+    SignOut()
+      .then(() => {
+        toast.success("Successfully loged out");
+        navigate("/login");
+      })
+      .catch((error) => console.error(error));
+  };
 
   const menuItems = (
     <>
@@ -89,10 +89,10 @@ const Navbar = () => {
         )}
       </li> */}
 
-      {/* {user?.uid || user?.email ? (
+      {user?.uid || user?.email ? (
         <>
           <li
-            className="normal-case text-base flex items-center navber-left"
+            className="normal-case font-semibold text-base text-black flex items-center navber-left"
             onClick={handleLogOut}
           >
             <button title="Log out" type="button">
@@ -143,8 +143,8 @@ const Navbar = () => {
       ) : (
         <>
           <li
-            className={`font-semibold dark:text-white ${
-              location.pathname === "/login" ? "text-orange-300" : ""
+            className={`font-semibold text-black dark:text-white ${
+              location.pathname === "/login" ? "text-orange-400" : ""
             }`}
           >
             <Link title="Log in" to="/login">
@@ -152,8 +152,8 @@ const Navbar = () => {
             </Link>
           </li>
           <li
-            className={`font-semibold dark:text-white ${
-              location.pathname === "/signup" ? "text-orange-300" : ""
+            className={`font-semibold text-black dark:text-white ${
+              location.pathname === "/signup" ? "text-orange-400" : ""
             }`}
           >
             <Link title="Sign up" to="/signup">
@@ -161,13 +161,13 @@ const Navbar = () => {
             </Link>
           </li>
         </>
-      )} */}
+      )}
     </>
   );
 
   return (
-    <div className="bg-[#FFFFFF] shadow-md static top-0 z-50 mb-36">
-      <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+    <div className="bg-[#FFFFFF] shadow-md static top-0 z-50">
+      <div className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div className="relative flex items-center justify-between">
           <Link
             to="/"
@@ -175,7 +175,7 @@ const Navbar = () => {
             title="Company"
             className="inline-flex items-center"
           >
-            <img src={logo} alt="" className="" />
+            <img src={logo} alt="" />
           </Link>
           <ul className="flex items-center hidden space-x-8 lg:flex text-[#FFFFFF]">
             {menuItems}
@@ -229,7 +229,7 @@ const Navbar = () => {
                         title="Company"
                         className="inline-flex items-center"
                       >
-                        <svg className=""></svg>
+                        <img src={logo} alt="" />
                       </Link>
                     </div>
                     <div>
