@@ -73,8 +73,8 @@ const Navbar = () => {
           About us
         </Link>
       </li>
-      {/* <li
-        className={`font-semibold dark:text-white ${
+      <li
+        className={`font-semibold text-black dark:text-white ${
           location.pathname === "/dashboard" ? "text-orange-300" : ""
         }`}
       >
@@ -87,7 +87,7 @@ const Navbar = () => {
             Dashboard
           </Link>
         )}
-      </li> */}
+      </li>
 
       {user?.uid || user?.email ? (
         <>
@@ -126,7 +126,7 @@ const Navbar = () => {
                     title="user?.displayName"
                     icon="iconoir:profile-circle"
                     width="25"
-                    className="lg:mt-2"
+                    className="lg:mt-2 text-black"
                   />
                 </label>
                 <ul
@@ -147,7 +147,7 @@ const Navbar = () => {
               location.pathname === "/login" ? "text-orange-400" : ""
             }`}
           >
-            <Link title="Log in" to="/loginn">
+            <Link title="Log in" to="/login">
               Log in
             </Link>
           </li>
@@ -203,7 +203,7 @@ const Navbar = () => {
               className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline"
               onClick={() => setIsMenuOpen(true)}
             >
-              <svg className="w-5 text-[#FFFFFF]" viewBox="0 0 24 24">
+              <svg className="w-5 text-black" viewBox="0 0 24 24">
                 <path
                   fill="currentColor"
                   d="M23,13H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,13,23,13z"

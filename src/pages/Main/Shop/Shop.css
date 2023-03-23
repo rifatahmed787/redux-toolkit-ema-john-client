@@ -1,0 +1,18 @@
+
+.cart-container{
+    background-color: rgba(255, 153, 0, 0.3);
+}
+.pagination{
+    text-align: center;
+    padding: 20px;
+}
+.pagination button{
+    margin-right: 5px;
+    width: 30px;
+}
+.pagination .selected{
+    background-color: orange;
+    border-radius: 50%;
+    width: 40px;
+    padding: 8px;
+}
