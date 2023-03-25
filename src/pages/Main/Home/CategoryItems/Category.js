@@ -8,7 +8,7 @@ const Category = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/category")
+    fetch("https://react-ema-john-pagination-server.vercel.app/category")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);

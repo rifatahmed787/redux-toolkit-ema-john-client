@@ -12,7 +12,7 @@ const Featured = () => {
   const [timerSec, setTimerSec] = useState("00");
   let interval = useRef();
   const startTimer = () => {
-    const countdownDate = new Date("March 21, 2023 00:00:00").getTime();
+    const countdownDate = new Date("April 21, 2023 00:00:00").getTime();
 
     interval = setInterval(() => {
       const now = new Date().getTime();
@@ -45,7 +45,7 @@ const Featured = () => {
   });
 
   useEffect(() => {
-    fetch("http://localhost:5000/featured")
+    fetch("https://react-ema-john-pagination-server.vercel.app/featured")
       .then((res) => res.json())
       .then((data) => setFeatureds(data));
   }, []);

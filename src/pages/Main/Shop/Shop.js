@@ -1,34 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import DotSpinner from "../../../component/Spinner/DotSpinner";
+import { useGetProductQuery } from "../../../features/api/apiSlice";
 import { toggleBrands } from "../../../features/filter/filterSlice";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 import "../Shop/Shop.css";
 import ProductCart from "./product/ProductCart";
 
 const Shop = () => {
-  const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filter);
   const { brands } = filters;
 
-  useEffect(() => {
-    fetch("http://localhost:5000/product")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+  const { data, isError, error, isLoading, isSuccess } = useGetProductQuery();
 
   //active class
   const activeClass = "text-white  bg-indigo-500 border-white";
 
   let content;
-  if (products.length) {
-    content = products.map((product) => (
+  if (data?.length) {
+    content = data.map((product) => (
       <ProductCart key={product._id} product={product} />
     ));
   }
 
-  if (products.length && brands.length) {
-    content = products
+  if (data?.length && brands?.length) {
+    content = data
       .filter((product) => {
         if (brands.length) {
           return brands.includes(product.brand);
@@ -43,9 +41,21 @@ const Shop = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  //if loading
+  if (isLoading) {
+    return <DotSpinner />;
+  }
+
+  //if error occured
+  if (isError) {
+    return <ErrorPage />;
+  }
+
+  //bg-[#1A2238]
+
   return (
     <div>
-      <div className="mt-7 flex justify-center gap-5">
+      <div className="mt-7 flex justify-center gap-5 dark:text-white">
         <button
           onClick={() => dispatch(toggleBrands("phone"))}
           className={`border px-3 py-2 rounded-full font-semibold ${

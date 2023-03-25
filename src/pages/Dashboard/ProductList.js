@@ -10,7 +10,7 @@
 
 //   useEffect(() => {
 //     dispatch(fetchProduct());
-//     // fetch("http://localhost:5000/products")
+//     // fetch("https://react-ema-john-pagination-server.vercel.app/products")
 //     //   .then((res) => res.json())
 //     //   .then((data) => setProducts(data.data));
 //   }, [dispatch]);

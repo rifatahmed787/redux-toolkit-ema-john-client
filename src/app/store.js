@@ -3,14 +3,17 @@ import cartSlice from "../features/cart/cartSlice";
 import filterSlice from "../features/filter/filterSlice";
 // import counterSlice from "../features/counterSlice";
 import logger from "redux-logger";
-import productSlice from "../features/products/productSlice";
+// import productSlice from "../features/products/productSlice";
+import { productApi } from "../features/api/apiSlice";
 
 export const store = configureStore({
   reducer: {
     // counter: counterSlice,
+    [productApi.reducerPath]: productApi.reducer,
     cart: cartSlice,
     filter: filterSlice,
-    products: productSlice,
+    // products: productSlice,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(logger, productApi.middleware),
 });
