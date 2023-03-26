@@ -80,7 +80,7 @@ export const router = createBrowserRouter([
         element: <ProductList />,
       },
       {
-        path: "/dashboard/allusers",
+        path: "add-product",
         element: <AddProduct />,
       },
     ],

@@ -92,7 +92,7 @@ const Navbar = () => {
       {user?.uid || user?.email ? (
         <>
           <li
-            className="normal-case font-semibold text-base text-black flex items-center navber-left"
+            className="normal-case font-semibold text-base text-black flex items-center dark:text-white navber-left"
             onClick={handleLogOut}
           >
             <button title="Log out" type="button">
@@ -166,7 +166,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-[#FFFFFF] shadow-md static top-0 z-50">
+    <div className="bg-[#FFFFFF] shadow-md static top-0 z-50 dark:bg-[#1A2238]">
       <div className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div className="relative flex items-center justify-between">
           <Link
@@ -220,7 +220,7 @@ const Navbar = () => {
             </button>
             {isMenuOpen && (
               <div className="absolute top-0 left-0 w-full z-10">
-                <div className="p-5 border rounded shadow-sm bg-[#1C2B35]">
+                <div className="p-5 border rounded shadow-sm bg-[#FFFFFF]  dark:bg-[#1C2B35]">
                   <div className="flex items-center justify-between mb-4">
                     <div>
                       <Link
@@ -248,12 +248,12 @@ const Navbar = () => {
                       </button>
                     </div>
                   </div>
-                  <label
+                  {/* <label
                     htmlFor="dashboard-drawer"
                     className="btn drawer-button btn-xs ml-20 rounded-md lg:hidden dark:text-white"
                   >
                     Open drawer
-                  </label>
+                  </label> */}
                   <nav>
                     <ul className="space-y-4 text-[#FFFFFF]">
                       {menuItems}

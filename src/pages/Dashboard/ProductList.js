@@ -1,105 +1,91 @@
-// import React, { useEffect, useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import fetchProduct from "../../redux/thunk/products/fetchProduct";
-// import removeProductData from "../../redux/thunk/products/removeProductData";
+import React from "react";
+import DotSpinner from "../../component/Spinner/DotSpinner";
+import {
+  useDeleteProductMutation,
+  useGetProductQuery,
+} from "../../features/api/apiSlice";
 
-// const ProductList = () => {
-//   const dispatch = useDispatch();
-//   // const [products, setProducts] = useState([]);
-//   const products = useSelector((state) => state.product.products);
+const ProductList = () => {
+  const { data, isLoading } = useGetProductQuery();
+  const [deleteProduct] = useDeleteProductMutation();
 
-//   useEffect(() => {
-//     dispatch(fetchProduct());
-//     // fetch("https://react-ema-john-pagination-server.vercel.app/products")
-//     //   .then((res) => res.json())
-//     //   .then((data) => setProducts(data.data));
-//   }, [dispatch]);
+  if (isLoading) {
+    return <DotSpinner />;
+  }
 
-//   return (
-//     <div class="flex flex-col justify-center items-center h-full w-full ">
-//       <div class="w-full max-w-7xl mx-auto rounded-lg  bg-white shadow-lg border border-gray-200">
-//         <header class="px-5 py-4 border-b border-gray-100">
-//           <div class="font-semibold text-gray-800">Products</div>
-//         </header>
+  return (
+    <div className="flex flex-col justify-center items-center h-full w-full ">
+      <div className="w-full max-w-7xl mx-auto rounded-lg  bg-white shadow-lg border border-gray-200">
+        <header className="px-5 py-4 border-b border-gray-100">
+          <div className="font-semibold text-gray-800">Products</div>
+        </header>
 
-//         <div class="overflow-x-auto p-3">
-//           <table class="table-auto w-full">
-//             <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
-//               <tr>
-//                 <th></th>
-//                 <th class="p-2">
-//                   <div class="font-semibold text-left">Product Name</div>
-//                 </th>
-//                 <th class="p-2">
-//                   <div class="font-semibold text-left">Brand</div>
-//                 </th>
-//                 <th class="p-2">
-//                   <div class="font-semibold text-left">In Stock</div>
-//                 </th>
-//                 <th class="p-2">
-//                   <div class="font-semibold text-left">Price</div>
-//                 </th>
-//                 <th class="p-2">
-//                   <div class="font-semibold text-center">Action</div>
-//                 </th>
-//               </tr>
-//             </thead>
+        <div className="overflow-x-auto p-3">
+          <table className="table-auto w-full">
+            <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+              <tr>
+                <th></th>
+                <th className="p-2">
+                  <div className="font-semibold text-left">Product Name</div>
+                </th>
+                <th className="p-2">
+                  <div className="font-semibold text-left">Brand</div>
+                </th>
+                <th className="p-2">
+                  <div className="font-semibold text-left">Price</div>
+                </th>
+                <th className="p-2">
+                  <div className="font-semibold text-center">Action</div>
+                </th>
+              </tr>
+            </thead>
 
-//             <tbody class="text-sm divide-y divide-gray-100">
-//               {products?.map(({ model, brand, price, status, _id }) => (
-//                 <tr>
-//                   <td class="p-2">
-//                     <input type="checkbox" class="w-5 h-5" value="id-1" />
-//                   </td>
-//                   <td class="p-2">
-//                     <div class="font-medium text-gray-800">{model}</div>
-//                   </td>
-//                   <td class="p-2">
-//                     <div class="text-left capitalize">{brand}</div>
-//                   </td>
-//                   <td class="p-2">
-//                     <div class="text-left">
-//                       {status ? (
-//                         <p className="text-green-500 font-medium">Available</p>
-//                       ) : (
-//                         <p className="text-red-500 font-medium">Stock out</p>
-//                       )}
-//                     </div>
-//                   </td>
-//                   <td class="p-2">
-//                     <div class="text-left font-medium text-indigo-500">
-//                       {price}
-//                     </div>
-//                   </td>
-//                   <td class="p-2">
-//                     <div class="flex justify-center">
-//                       <button onClick={() => dispatch(removeProductData(_id))}>
-//                         <svg
-//                           class="w-8 h-8 hover:text-red-600 rounded-full hover:bg-gray-100 p-1"
-//                           fill="none"
-//                           stroke="currentColor"
-//                           viewBox="0 0 24 24"
-//                           xmlns="http://www.w3.org/2000/svg"
-//                         >
-//                           <path
-//                             stroke-linecap="round"
-//                             stroke-linejoin="round"
-//                             stroke-width="2"
-//                             d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-//                           ></path>
-//                         </svg>
-//                       </button>
-//                     </div>
-//                   </td>
-//                 </tr>
-//               ))}
-//             </tbody>
-//           </table>
-//         </div>
-//       </div>
-//     </div>
-//     // </section>
-//   );
-// };
+            <tbody className="text-sm divide-y divide-gray-100">
+              {data?.map(({ name, brand, price, _id }) => (
+                <tr>
+                  <td className="p-2">
+                    <input type="checkbox" className="w-5 h-5" value="id-1" />
+                  </td>
+                  <td className="p-2">
+                    <div className="font-medium text-gray-800">{name}</div>
+                  </td>
+                  <td className="p-2">
+                    <div className="text-left capitalize">{brand}</div>
+                  </td>
+                  <td className="p-2">
+                    <div className="text-left font-medium text-indigo-500">
+                      {price}
+                    </div>
+                  </td>
+                  <td className="p-2">
+                    <div className="flex justify-center">
+                      <button onClick={() => deleteProduct(_id)}>
+                        <svg
+                          className="w-8 h-8 hover:text-red-600 rounded-full hover:bg-gray-100 p-1"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                          ></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    // </section>
+  );
+};
 
-// export default ProductList;
+export default ProductList;

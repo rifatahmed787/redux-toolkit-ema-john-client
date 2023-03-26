@@ -54,8 +54,6 @@ const Shop = () => {
     );
   }
 
-  //bg-[#1A2238]
-
   return (
     <div>
       <div className="mt-7 flex justify-center gap-5 dark:text-white">

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Icon } from "@iconify/react";
 import "../product/Product.css";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../../../../AuthProvider/UserContext";
 import { useDispatch } from "react-redux";
@@ -11,7 +11,6 @@ import { addToCart } from "../../../../features/cart/cartSlice";
 const ProductCart = ({ product }) => {
   const { user } = useContext(AuthContext);
   const [clicked, setClicked] = useState(false);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleAddToCart = (selectedProduct) => {
@@ -23,22 +22,6 @@ const ProductCart = ({ product }) => {
       shipping: product.shipping,
       email: user.email,
     };
-
-    fetch("https://react-ema-john-pagination-server.vercel.app/addtocart", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(cartProduct),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.acknowledged) {
-          toast.success("Product added to cart");
-          // navigate("/cart");
-          setClicked(true);
-        }
-      });
   };
 
   return (
