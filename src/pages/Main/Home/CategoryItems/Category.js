@@ -1,17 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "../CategoryItems/Category.css";
 
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
+import { useGetCategoryQuery } from "../../../../features/api/apiSlice";
+import DotSpinner from "../../../../component/Spinner/DotSpinner";
 
 const Category = () => {
-  const [categories, setCategories] = useState([]);
+  const { data, isError, isLoading } = useGetCategoryQuery();
 
-  useEffect(() => {
-    fetch("https://react-ema-john-pagination-server.vercel.app/category")
-      .then((res) => res.json())
-      .then((data) => setCategories(data));
-  }, []);
+  if (isLoading) {
+    return <DotSpinner />;
+  }
+
+  if (isError) {
+    return (
+      <p className="flex justify-center items-center">
+        Something went wrong. Please try again.
+      </p>
+    );
+  }
 
   return (
     <div>
@@ -20,7 +28,7 @@ const Category = () => {
           categories
         </h1>
         <div className="grid lg:grid-cols-3 gap-7 justify-center">
-          {categories.map((category) => (
+          {data?.map((category) => (
             <div
               key={category._id}
               className="max-w-sm shadow-2xl bg-orange-300 relative card rounded-md overflow-hidden"

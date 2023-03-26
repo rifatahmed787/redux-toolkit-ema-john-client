@@ -3,9 +3,10 @@ import img from "../../../../assets/images/banner-images/discount-removebg-previ
 import "../FeatureItems/Featured.css";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
+import { useGetFeaturedQuery } from "../../../../features/api/apiSlice";
+import DotSpinner from "../../../../component/Spinner/DotSpinner";
 
 const Featured = () => {
-  const [featureds, setFeatureds] = useState([]);
   const [timerDays, setTimerDays] = useState("00");
   const [timerHours, setTimerHoures] = useState("00");
   const [timerMin, setTimerMin] = useState("00");
@@ -44,11 +45,21 @@ const Featured = () => {
     };
   });
 
-  useEffect(() => {
-    fetch("https://react-ema-john-pagination-server.vercel.app/featured")
-      .then((res) => res.json())
-      .then((data) => setFeatureds(data));
-  }, []);
+  //get featured items
+  const { data, isError, isLoading } = useGetFeaturedQuery();
+  const featureds = data;
+
+  if (isLoading) {
+    return <DotSpinner />;
+  }
+
+  if (isError) {
+    return (
+      <p className="flex justify-center items-center">
+        Something went wrong. Please try again.
+      </p>
+    );
+  }
 
   return (
     <div className="container mx-auto dark:text-white">
@@ -59,7 +70,7 @@ const Featured = () => {
               Featured
             </h1>
           </div>
-          {featureds.map((featured) => (
+          {featureds?.map((featured) => (
             <div
               key={featured._id}
               className="w-full md:w-1/2 lg:w-1/4 pl-5 pr-5 mb-5 lg:pl-2 lg:pr-2 dark:bg-black dark:text-white"

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import DotSpinner from "../../../component/Spinner/DotSpinner";
 import { useGetProductQuery } from "../../../features/api/apiSlice";
 import { toggleBrands } from "../../../features/filter/filterSlice";
-import ErrorPage from "../ErrorPage/ErrorPage";
 
 import "../Shop/Shop.css";
 import ProductCart from "./product/ProductCart";
@@ -13,7 +12,7 @@ const Shop = () => {
   const filters = useSelector((state) => state.filter);
   const { brands } = filters;
 
-  const { data, isError, error, isLoading, isSuccess } = useGetProductQuery();
+  const { data, isError, isLoading } = useGetProductQuery();
 
   //active class
   const activeClass = "text-white  bg-indigo-500 border-white";
@@ -48,7 +47,11 @@ const Shop = () => {
 
   //if error occured
   if (isError) {
-    return <ErrorPage />;
+    return (
+      <p className="flex justify-center items-center min-h-screen">
+        Something went wrong. Please try again.
+      </p>
+    );
   }
 
   //bg-[#1A2238]
