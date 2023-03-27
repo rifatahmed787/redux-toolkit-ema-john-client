@@ -7,6 +7,7 @@ import About from "../pages/Main/About/About";
 import Cart from "../pages/Main/Cart/Cart";
 import ErrorPage from "../pages/Main/ErrorPage/ErrorPage";
 import Home from "../pages/Main/Home/Home";
+import Payment from "../pages/Main/Payment/Payment";
 import Shop from "../pages/Main/Shop/Shop";
 import ForgotPass from "../pages/Main/Signin/ForgotPass";
 import Signin from "../pages/Main/Signin/Signin";
@@ -51,10 +52,10 @@ export const router = createBrowserRouter([
       //     </PrivateRoute>
       //   ),
       // },
-      // {
-      //   path: "/payment",
-      //   element: <Payment />,
-      // },
+      {
+        path: "/payment",
+        element: <Payment />,
+      },
 
       {
         path: "/login",

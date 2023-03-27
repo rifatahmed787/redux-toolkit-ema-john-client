@@ -73,7 +73,7 @@ const Navbar = () => {
           About us
         </Link>
       </li>
-      <li
+      {/* <li
         className={`font-semibold text-black dark:text-white ${
           location.pathname === "/dashboard" ? "text-orange-300" : ""
         }`}
@@ -87,7 +87,7 @@ const Navbar = () => {
             Dashboard
           </Link>
         )}
-      </li>
+      </li> */}
 
       {user?.uid || user?.email ? (
         <>

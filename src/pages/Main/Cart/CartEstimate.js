@@ -1,9 +1,12 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { clearCart } from "../../../features/cart/cartSlice";
 
 import "../Cart/Cart.css";
 const CartEstimate = (props) => {
-  const { cart, handleClearCart } = props;
+  const { cart } = props;
+  const dispatch = useDispatch();
 
   //estimate
   let total = 0;
@@ -26,16 +29,24 @@ const CartEstimate = (props) => {
       <p className="font-bold">Tax: ${tax}</p>
       <h5 className="font-bold">Grand Total: ${grandTotal.toFixed(2)}</h5>
       <div className="space-x-2">
-        <button
-          className="font-bold border border-orange-500 hover:bg-orange-500 hover:text-white px-2"
-          onClick={handleClearCart}
-        >
-          Clear Cart
-        </button>
-        <Link to="/payment">
-          <button className="font-bold border border-orange-500 hover:bg-orange-500 hover:text-white px-2">
-            Confirm order
+        {cart?.length > 0 ? (
+          <button
+            className="font-bold border border-orange-500 hover:bg-orange-500 hover:text-white px-2"
+            onClick={() => dispatch(clearCart(cart))}
+          >
+            Clear Cart
           </button>
+        ) : (
+          ""
+        )}
+        <Link to="/payment">
+          {cart?.length > 0 ? (
+            <button className="font-bold border border-orange-500 hover:bg-orange-500 hover:text-white px-2">
+              Confirm order
+            </button>
+          ) : (
+            ""
+          )}
         </Link>
       </div>
     </div>

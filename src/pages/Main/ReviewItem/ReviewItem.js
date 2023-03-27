@@ -5,7 +5,7 @@ import { removeFromCart } from "../../../features/cart/cartSlice";
 import "../ReviewItem/ReviewItem.css";
 
 const ReviewItem = ({ cart, handleRemoveItem }) => {
-  const { name, price, quantity, shipping, img, _id } = cart;
+  const { name, price, quantity, shipping, img } = cart;
   const dispatch = useDispatch();
 
   return (
