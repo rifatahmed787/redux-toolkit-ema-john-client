@@ -36,7 +36,7 @@ const Carousel = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <div className="grid grid-cols-2 justify-items-center space-y-5 bg-[#FFEBCD] dark:text-white  dark:bg-black">
+          <div className="grid lg:grid-cols-2 justify-items-center space-y-5 bg-[#FFEBCD] dark:text-white  dark:bg-black">
             <div className="my-auto">
               <h2 className="text-3xl font-serif font-bold">
                 Cool dude headphone
@@ -64,7 +64,7 @@ const Carousel = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="grid grid-cols-2 justify-items-center pb-10 pt-4 bg-[#FFEBCD] dark:bg-black dark:text-white">
+          <div className="grid lg:grid-cols-2 justify-items-center pb-10 pt-4 bg-[#FFEBCD] dark:bg-black dark:text-white">
             <div className="my-auto">
               <h2 className="text-3xl font-serif font-bold">
                 Cool dude backpack
@@ -87,7 +87,7 @@ const Carousel = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="grid grid-cols-2 justify-items-center pb-10 pt-4 bg-[#FFEBCD] dark:bg-black dark:text-white">
+          <div className="grid lg:grid-cols-2 justify-items-center pb-10 pt-4 bg-[#FFEBCD] dark:bg-black dark:text-white">
             <div className="my-auto">
               <h2 className="text-3xl font-serif font-bold">Cool dude watch</h2>
               <p className="py-2">
@@ -108,7 +108,7 @@ const Carousel = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="grid grid-cols-2 justify-items-center space-y-5 bg-[#FFEBCD] dark:bg-black dark:text-white">
+          <div className="grid lg:grid-cols-2 justify-items-center space-y-5 bg-[#FFEBCD] dark:bg-black dark:text-white">
             <div className="my-auto">
               <h2 className="text-3xl font-serif font-bold">
                 X box for your living room
@@ -132,7 +132,7 @@ const Carousel = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="grid grid-cols-2 justify-items-center space-y-5 dark:text-white bg-[#FFEBCD] dark:bg-black">
+          <div className="grid lg:grid-cols-2 justify-items-center space-y-5 dark:text-white bg-[#FFEBCD] dark:bg-black">
             <div className="my-auto">
               <h2 className="text-3xl font-serif font-bold">
                 LCD TV for watching sports
