@@ -56,10 +56,10 @@ const Shop = () => {
 
   return (
     <div>
-      <div className="mt-7 flex justify-center gap-5 dark:text-white">
+      <div className="mt-7 grid lg:grid-cols-6 sm:grid-cols-3 md:grid-cols-3 justify-items-center gap-5 dark:text-white">
         <button
           onClick={() => dispatch(toggleBrands("phone"))}
-          className={`border px-3 py-2 rounded-full font-semibold ${
+          className={`border w-24 shadow-md px-3 py-2 rounded-full font-semibold ${
             brands.includes("phone") ? activeClass : null
           }`}
         >
@@ -67,7 +67,7 @@ const Shop = () => {
         </button>
         <button
           onClick={() => dispatch(toggleBrands("headphone"))}
-          className={`border px-3 py-2 rounded-full font-semibold ${
+          className={`border w-28 shadow-md px-3 py-2 rounded-full font-semibold ${
             brands.includes("headphone") ? activeClass : null
           }`}
         >
@@ -75,7 +75,7 @@ const Shop = () => {
         </button>
         <button
           onClick={() => dispatch(toggleBrands("backpack"))}
-          className={`border px-3 py-2 rounded-full font-semibold ${
+          className={`border w-24 shadow-md px-3 py-2 rounded-full font-semibold ${
             brands.includes("backpack") ? activeClass : null
           }`}
         >
@@ -83,7 +83,7 @@ const Shop = () => {
         </button>
         <button
           onClick={() => dispatch(toggleBrands("shoe"))}
-          className={`border px-3 py-2 rounded-full font-semibold ${
+          className={`border w-24 shadow-md px-3 py-2 rounded-full font-semibold ${
             brands.includes("shoe") ? activeClass : null
           }`}
         >
@@ -91,7 +91,7 @@ const Shop = () => {
         </button>
         <button
           onClick={() => dispatch(toggleBrands("bottle"))}
-          className={`border px-3 py-2 rounded-full font-semibold ${
+          className={`border w-24 shadow-md px-3 py-2 rounded-full font-semibold ${
             brands.includes("bottle") ? activeClass : null
           }`}
         >
@@ -99,7 +99,7 @@ const Shop = () => {
         </button>
         <button
           onClick={() => dispatch(toggleBrands("cap"))}
-          className={`border px-3 py-2 rounded-full font-semibold ${
+          className={`border w-24 shadow-md px-3 py-2 rounded-full font-semibold ${
             brands.includes("cap") ? activeClass : null
           }`}
         >
